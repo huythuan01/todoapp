@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".activities.AddActivity">
+
+    <TextView
+        android:id="@+id/tvAddHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:text="Thêm công việc"
+        android:textColor="@color/black"
+        android:textSize="24dp"/>
+
+    <ImageView
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_done_24"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/tvAddHead"
+        android:layout_marginEnd="9dp"/>
+
+    <EditText
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Tiêu đề"
+        android:padding="12dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/tvAddHead"
+        android:layout_marginTop="16dp"
+        android:maxLines="1"/>
+
+    <EditText
+        android:id="@+id/txtDecs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="Mô tả"
+        android:gravity="top"
+        android:padding="12dp"
+        android:textSize="18dp"
+        android:layout_below="@id/txtTitle"
+        android:layout_marginTop="12dp"/>
+
+
+</RelativeLayout>
