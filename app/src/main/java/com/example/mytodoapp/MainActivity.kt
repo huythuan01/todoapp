@@ -1,5 +1,7 @@
 package com.example.mytodoapp
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,7 +35,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnExit.setOnClickListener {
-            finish()
+            val dialog = AlertDialog.Builder(this)
+            dialog.setTitle("Thoát ứng dụng")
+            dialog.setMessage("Bạn có muốn thoát không ?")
+            dialog.setPositiveButton("Có") { _: DialogInterface, _: Int ->
+                finish()
+            }
+            dialog.setNegativeButton("Không") { _: DialogInterface, _: Int ->
+
+            }
+            dialog.show()
         }
     }
 

@@ -3,7 +3,7 @@ package com.example.mytodoapp.model
 import java.io.Serializable
 
 data class Task(var name: String) : Serializable {
-    var id: Int? = null
+    var id: Int = -1
     var title: String? = null
     var description: String? = null
 

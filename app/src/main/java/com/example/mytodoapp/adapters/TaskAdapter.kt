@@ -1,6 +1,8 @@
 package com.example.mytodoapp.adapters
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +20,7 @@ class TaskAdapter(private var tasks: List<Task>, context: Context) :
     RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private val db: DbHelper = DbHelper(context)
-
+    private lateinit var mcontext : Context
     class  TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val tvTitle : TextView = itemView.findViewById(R.id.tvTitle)
         val tvDesc : TextView = itemView.findViewById(R.id.tvDesc)
@@ -27,6 +29,7 @@ class TaskAdapter(private var tasks: List<Task>, context: Context) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
+        mcontext = parent.context
         val view = LayoutInflater.from(parent.context).inflate(R.layout.task_item, parent, false)
         return TaskViewHolder(view)
     }
@@ -45,9 +48,18 @@ class TaskAdapter(private var tasks: List<Task>, context: Context) :
             holder.itemView.context.startActivity(intent)
         }
         holder.btnDelete.setOnClickListener {
-            db.deleteTask(task.id)
-            refreshData(db.getAllTasks())
-            Toast.makeText(holder.itemView.context, "Đã xóa", Toast.LENGTH_SHORT).show()
+            var dialog = AlertDialog.Builder(mcontext)
+            dialog.setTitle("Cảnh báo")
+            dialog.setMessage("Bạn có chắc chắn muốn xóa không ?")
+            dialog.setPositiveButton("Có") { _: DialogInterface, _: Int ->
+                db.deleteTask(task.id)
+                refreshData(db.getAllTasks())
+                Toast.makeText(holder.itemView.context, "Đã xóa", Toast.LENGTH_SHORT).show()
+            }
+            dialog.setNegativeButton("Không") { _: DialogInterface, _: Int ->
+
+            }
+            dialog.show()
         }
 
     }
