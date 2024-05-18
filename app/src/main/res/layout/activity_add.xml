@@ -41,7 +41,7 @@
     <EditText
         android:id="@+id/txtDecs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="250dp"
         android:hint="Mô tả"
         android:gravity="top"
         android:padding="12dp"
